@@ -1,0 +1,120 @@
+{
+  "people": [
+    {
+      "id": 0,
+      "nickname": "Lisa",
+      "firstname": "Lalisa",
+      "lastname": "Manoban",
+      "birthday": "03/12/1997",
+      "status": "single",
+      "country": "thailand",
+      "img": "http://www.gstatic.com/tv/thumb/persons/1418267/1418267_v9_aa.jpg",
+      "hobbies": [
+        "Singing",
+        "Dancing"
+      ],
+      "likes": {
+        "1": "blackpink",
+        "2": "cats"
+      }
+    },
+    {
+      "id": 1,
+      "nickname": "Jisoo",
+      "firstname": "Jisoo",
+      "lastname": "Kim",
+      "birthday": "01/03/1995",
+      "status": "single",
+      "country": "korea",
+      "img": "http://www.gstatic.com/tv/thumb/persons/1418277/1418277_v9_aa.jpg",
+      "hobbies": [
+        "Singing",
+        "Playing Games"
+      ],
+      "likes": {
+        "1": "blackpink",
+        "2": "dogs"
+      }
+    },
+    {
+      "id": 2,
+      "nickname": "Jennie",
+      "firstname": "Jennie",
+      "lastname": "Kim",
+      "birthday": "01/16/1996",
+      "status": "single",
+      "country": "new zealand",
+      "img": "http://www.gstatic.com/tv/thumb/persons/1357774/1357774_v9_aa.jpg",
+      "hobbies": [
+        "Singing",
+        "Dancing"
+      ],
+      "likes": {
+        "1": "blackpink",
+        "2": "dogs"
+      }
+    },
+    {
+      "id": 3,
+      "nickname": "Rose",
+      "firstname": "Roseanne",
+      "lastname": "Park",
+      "birthday": "02/11/1997",
+      "status": "single",
+      "country": "australia",
+      "img": "https://pbs.twimg.com/media/DtLOKk_VAAAwu5z.jpg",
+      "hobbies": [
+        "Singing",
+        "Eating"
+      ],
+      "likes": {
+        "1": "blackpink",
+        "2": "food"
+      }
+    },
+    {
+      "nickname": "Angel",
+      "firstname": "Angel",
+      "lastname": "Locsin",
+      "img": "https://upload.wikimedia.org/wikipedia/commons/1/18/Angel_Locsin_at_the_premiere_of_Love_Me_Again_in_LA%2C_December_2008.jpg",
+      "birthday": "04/10/1997",
+      "status": "single",
+      "country": "Philippines",
+      "hobbies": [],
+      "id": 4
+    },
+    {
+      "nickname": "Sarah",
+      "firstname": "Sarah",
+      "lastname": "Geronimo",
+      "img": "http://www.gstatic.com/tv/thumb/persons/368889/368889_v9_ba.jpg",
+      "birthday": "04/09/2021",
+      "status": "single",
+      "country": "Philippines",
+      "hobbies": [],
+      "id": 5
+    },
+    {
+      "nickname": "Because?",
+      "firstname": "Kris ",
+      "lastname": "Aquino",
+      "img": "https://i.imgflip.com/4wzwz5.jpg",
+      "birthday": "04/09/2021",
+      "status": "single",
+      "country": "Philippines",
+      "hobbies": [],
+      "id": 6
+    },
+    {
+      "nickname": "Idol Raffy",
+      "firstname": "Raffy",
+      "lastname": "Tulfo",
+      "img": "https://static.wikia.nocookie.net/youtube/images/b/b4/Raffy.jpg",
+      "birthday": "04/09/2021",
+      "status": "married",
+      "country": "Philippines",
+      "hobbies": [],
+      "id": 7
+    }
+  ]
+}
