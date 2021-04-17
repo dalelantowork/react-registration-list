@@ -86,9 +86,7 @@ li:nth-child(odd) { background: #F5F5F5; }
     box-shadow: inset 0px 0px 20px 0px rgba(0,0,0,0.5);
     border-radius: 10px;
 }
-.sides {
-    
-}
+
 .chosen-img {
     max-width: 250px;
     width: 150px;
@@ -316,6 +314,42 @@ li:nth-child(odd) { background: #F5F5F5; }
   background-color: white;
   margin-right: -5px;
 }
+.img-loading {
+  margin: auto;
+  text-align:center;
+  width: 100px;
+  height: 100px;
+}
+.img-waterdrop {
+  margin: auto;
+  margin-top: 20px;
+  text-align:center;
+  width: 300px;
+  height: 200px;
+}
+/* scroll bar color */
+
+.row-people {
+  --scrollbarBG: #1E90FF;
+  --thumbBG:#00DEFC;
+}
+.row-people::-webkit-scrollbar {
+  width: 10px;
+}
+.row-people {
+  scrollbar-width: thin;
+  scrollbar-color: var(--thumbBG) var(--scrollbarBG);
+}
+.row-people::-webkit-scrollbar-track {
+  background: var(--scrollbarBG);
+  border-radius: 10px;
+}
+.row-people::-webkit-scrollbar-thumb {
+  background-color: var(--thumbBG) ;
+  border-radius: 10px;
+  border: 3px solid var(--scrollbarBG);
+}
+
 /*
 .point {
     width: 6px;

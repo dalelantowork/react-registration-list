@@ -5,23 +5,24 @@ const AppContext = React.createContext()
 const AppProvider = ({children}) => {
     const [isModalOpen,setIsModalOpen] = useState(false)
     const [people,setPeople] = useState([])
-    const [addEffect,setAddEffect] = useState(true)
+    const addEffect = useState(true)
     const [alert,setAlert] = useState({
         show:false, msg:'sucessfully added', type:'success'
     })
-    let lastPerson = people.length; 
+    //let lastPerson = people.length; 
     const [chosenPerson,setChosenPerson] = useState(0)
     const [isEditing,setIsEditing] = useState(false)
-    // {lastperson.map( last => {
-    //     console.log(last.id)
+    // {lastPerson.map( last => {
+    //     
     // })}
+    //console.log("people " + people)
     //console.log(people.length);
     useEffect(() => {
         const fetchPeople = async () => {
-          const res = await fetch('http://localhost:5000/people')
+          const res = await fetch('https://dalelanto-people.herokuapp.com/people')
           const data = await res.json()
           setPeople(data)
-          //console.log(data)
+          //console.log("data " + people)
         }
     
         fetchPeople()

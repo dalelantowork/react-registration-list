@@ -1,76 +1,45 @@
 {
   "people": [
     {
-      "id": 0,
+      "_id": 0,
       "nickname": "Lisa",
       "firstname": "Lalisa",
       "lastname": "Manoban",
       "birthday": "03/12/1997",
       "status": "single",
       "country": "thailand",
-      "img": "http://www.gstatic.com/tv/thumb/persons/1418267/1418267_v9_aa.jpg",
-      "hobbies": [
-        "Singing",
-        "Dancing"
-      ],
-      "likes": {
-        "1": "blackpink",
-        "2": "cats"
-      }
+      "img": "http://www.gstatic.com/tv/thumb/persons/1418267/1418267_v9_aa.jpg"
     },
     {
-      "id": 1,
+      "_id": 1,
       "nickname": "Jisoo",
       "firstname": "Jisoo",
       "lastname": "Kim",
       "birthday": "01/03/1995",
       "status": "single",
       "country": "korea",
-      "img": "http://www.gstatic.com/tv/thumb/persons/1418277/1418277_v9_aa.jpg",
-      "hobbies": [
-        "Singing",
-        "Playing Games"
-      ],
-      "likes": {
-        "1": "blackpink",
-        "2": "dogs"
-      }
+      "img": "http://www.gstatic.com/tv/thumb/persons/1418277/1418277_v9_aa.jpg"
     },
     {
-      "id": 2,
+      "_id": 2,
       "nickname": "Jennie",
       "firstname": "Jennie",
       "lastname": "Kim",
       "birthday": "01/16/1996",
       "status": "single",
       "country": "new zealand",
-      "img": "http://www.gstatic.com/tv/thumb/persons/1357774/1357774_v9_aa.jpg",
-      "hobbies": [
-        "Singing",
-        "Dancing"
-      ],
-      "likes": {
-        "1": "blackpink",
-        "2": "dogs"
-      }
+      "img": "http://www.gstatic.com/tv/thumb/persons/1357774/1357774_v9_aa.jpg"
+      
     },
     {
-      "id": 3,
+      "_id": 3,
       "nickname": "Rose",
       "firstname": "Roseanne",
       "lastname": "Park",
       "birthday": "02/11/1997",
       "status": "single",
       "country": "australia",
-      "img": "https://pbs.twimg.com/media/DtLOKk_VAAAwu5z.jpg",
-      "hobbies": [
-        "Singing",
-        "Eating"
-      ],
-      "likes": {
-        "1": "blackpink",
-        "2": "food"
-      }
+      "img": "https://pbs.twimg.com/media/DtLOKk_VAAAwu5z.jpg"
     },
     {
       "nickname": "Angel",
@@ -80,8 +49,7 @@
       "birthday": "04/10/1997",
       "status": "single",
       "country": "Philippines",
-      "hobbies": [],
-      "id": 4
+      "_id": 4
     },
     {
       "nickname": "Sarah",
@@ -91,19 +59,7 @@
       "birthday": "04/09/2021",
       "status": "single",
       "country": "Philippines",
-      "hobbies": [],
-      "id": 5
-    },
-    {
-      "nickname": "Because?",
-      "firstname": "Kris ",
-      "lastname": "Aquino",
-      "img": "https://i.imgflip.com/4wzwz5.jpg",
-      "birthday": "04/09/2021",
-      "status": "single",
-      "country": "Philippines",
-      "hobbies": [],
-      "id": 6
+      "_id": 5
     },
     {
       "nickname": "Idol Raffy",
@@ -113,8 +69,17 @@
       "birthday": "04/09/2021",
       "status": "married",
       "country": "Philippines",
-      "hobbies": [],
-      "id": 7
+      "_id": 7
+    },
+    {
+      "nickname": "Jose Rizal",
+      "firstname": "José Protasio",
+      "lastname": "Rizal",
+      "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b0/Jose_rizal_01.jpg/440px-Jose_rizal_01.jpg",
+      "birthday": "06/19/1861",
+      "status": "single",
+      "country": "Philippines",
+      "_id": 8
     }
   ]
 }

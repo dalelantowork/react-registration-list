@@ -1,19 +1,20 @@
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import './App.css'
-import People from './People.js'
 import Person from './Person.js'
 import AddPerson from './AddPerson.js'
 import { AiFillPlusCircle,AiFillCloseCircle } from "react-icons/ai"
-import {AppContext, useGlobalContext} from './context'
+import { useGlobalContext} from './context'
 import Alert from './Alert'
-import { IoPerson } from "react-icons/io5";
+import loading from './images/loading.gif'
+import waterdrop from './images/waterdrop.gif'
+
 function App() {
   //const [people,setPeople] = useState([])
-  const {people,setPeople,addEffect} = useGlobalContext()
+  const {people} = useGlobalContext()
   let {chosenPerson,setChosenPerson} = useGlobalContext()
-  let {isEditing,setIsEditing} = useGlobalContext()
+  let {setIsEditing} = useGlobalContext()
   const [isAdding,setIsAdding] = useState(false)
-  const {alert,setAlert,showAlert} = useGlobalContext()
+  const {alert,showAlert} = useGlobalContext()
   // useEffect(() => {
   //   const fetchPeople = async () => {
   //     const res = await fetch('http://localhost:5000/people')
@@ -24,29 +25,27 @@ function App() {
 
   //   fetchPeople()
   // }, [])
-
-  const clickImage = (id) => {
-    console.log(id)
-    setChosenPerson(id)
+  //console.log(chosenPerson)
+  const clickImage = (_id) => {
+    //console.log(_id)
+    setChosenPerson(_id)
     setIsEditing(false)
-    //setEditID(id)
   }
 
   /* add person clicked */
   const addPerson = () => {
     //console.log()
     setIsAdding(!isAdding)
+    if(chosenPerson===0){
+      setChosenPerson(chosenPerson+1)
+    } else if(chosenPerson===1){
+      setChosenPerson(chosenPerson-1)
+    }
+    
     //setIsEditing(true)
-    //setEditID(id)
   }
 
-  
-  // useEffect(()=>{
-  //   let slider = setInterval(()=>{
-  //     setIndex(index + 1)
-  //   },3000) 
-  //   return () => clearInterval(slider)
-  // }, [index])
+
 
   return (
     <div className="App">
@@ -57,7 +56,7 @@ function App() {
               ? <Alert {...alert} removeAlert={showAlert} people={people}/>
               : 
               <header className="reg-header">
-              COVID-19 Vaccine
+              Most Famous People
               </header>
               } 
             
@@ -68,10 +67,17 @@ function App() {
           </div>
           <div className="div-person"> 
             <div className="chosen-person" >
-              {isAdding === false 
+            {chosenPerson === 0
+              ? (
+                <>
+                <img src={waterdrop} alt="loading" className="img-waterdrop" /><br></br>
+                <span> Click Below </span>
+                </>
+              )
+              : isAdding === false 
               ? <Person people={people} chosenPerson={chosenPerson}/>  
               : <AddPerson/>
-              }
+            } 
               </div>
           </div>
 
@@ -79,21 +85,29 @@ function App() {
           <header>List of Registered People</header>
           
             <ul className="row-people img-boxes ">
-            {people.map((person)=>{
-                const {id,nickname,firstname,lastname,birthday,status,
-                    country,img,hobby ,likes} = person
+            {!people.length ? <img src={loading} alt="loading" className="img-loading" /> 
+            :
+            (
+              <>
+              {people.map((person)=>{
+                const {_id,nickname,img} = person
                 return (
-                    <li className="column-people person-box" key={id} >
+                    <li className="column-people person-box" key={_id} >
                         {(img.includes('http://') || img.includes('https://')) && (img.includes('.jpg') || img.includes('.png')) 
-                        ? <img src={img} title="click to view" alt={nickname} className="img-list" onClick={()=>clickImage(id)}/>
+                        ? <img src={img} title="click to view" alt={nickname} className="img-list" onClick={()=>clickImage(_id)}/>
                         : <img src="https://cdn.pixabay.com/photo/2016/11/14/17/39/person-1824147_960_720.png"
-                         title="click to view" alt={nickname} className="img-list" onClick={()=>clickImage(id)}/>
+                         title="click to view" alt={nickname} className="img-list" onClick={()=>clickImage(_id)}/>
                         }
                         
                         <p className="img-name">{nickname}</p>
                     </li>
                 );
             })}
+              </>
+            )
+
+            }
+            
             </ul>
           </div>
 

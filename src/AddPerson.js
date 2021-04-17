@@ -1,10 +1,10 @@
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import React from 'react'
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import * as moment from 'moment'
-import {AppContext, useGlobalContext} from './context'
-import Alert from './Alert'
+import { useGlobalContext} from './context'
+
 
 const AddPerson = () => {
     const [nickname,setNickname] = useState('')
@@ -13,10 +13,9 @@ const AddPerson = () => {
     const [birthDate, setBirthDate] = useState(new Date())
     const [status, setStatus] = useState('single')
     const [country,setCountry] = useState('')
-    const [hobbies,setHobbies] = useState([])
     const [imgLink,setImgLink] = useState('')
     const {people,setPeople,lastPerson} = useGlobalContext()
-    const {alert,setAlert,showAlert} = useGlobalContext()
+    const {showAlert} = useGlobalContext()
     // const convertDate = (date) => {
     //     //setBirthDate(moment(date).format('MMMM Do YYYY'))
     //     console.log(birthDate)
@@ -24,7 +23,7 @@ const AddPerson = () => {
 
     // Add person submit
     const addPersonSubmit = async (newItem) => {
-        const res = await fetch(`http://localhost:5000/people`,
+        const res = await fetch(`https://dalelanto-people.herokuapp.com/people`,
         {
         method: 'POST',
         headers: {
@@ -45,7 +44,7 @@ const AddPerson = () => {
             console.log("empty submitted")
         }else{
             const newItem = {
-                id: lastPerson,
+                _id: lastPerson,
                 nickname:nickname,
                 firstname:firstname,
                 lastname:lastname,
@@ -53,16 +52,14 @@ const AddPerson = () => {
                 birthday:moment(birthDate).format('MM/DD/YYYY'),
                 status:status,
                 country:country,
-                hobbies:hobbies,
             }
-            addPersonSubmit(newItem);
+            addPersonSubmit(newItem)
             setNickname('')
             setFirstname('')
             setLastname('')
             setImgLink('')
             setStatus('single')
             setCountry('')
-            setHobbies([])
             showAlert(true,'success', 'Added Successfully')
             //console.log(newItem)
         }
@@ -106,10 +103,6 @@ const AddPerson = () => {
                     <div className="add-row">
                         <label className="add-label"> Country: </label>
                         <input className="add-input" type="text" value={country} onChange={(e)=>setCountry(e.target.value)} size="30" required/>
-                    </div>
-                    <div className="add-row">
-                        <label className="add-label"> Hobbies: </label>
-                        <input className="add-input" type="text" value={hobbies} onChange={(e)=>setHobbies(e.target.value)} size="30"/>
                     </div>
                 </div>
                 <div className="add-submit-btn">

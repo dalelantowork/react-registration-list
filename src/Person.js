@@ -1,8 +1,8 @@
 import React from 'react'
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import Modal from './Modal.js'
-import {AppContext, useGlobalContext} from './context'
-import { AiFillEdit,AiFillDelete,AiFillSave } from "react-icons/ai"
+import {useGlobalContext} from './context'
+import { AiFillEdit,AiFillDelete} from "react-icons/ai"
 import { GiSave } from "react-icons/gi"
 import DatePicker from "react-datepicker";
 import * as moment from 'moment'
@@ -11,8 +11,8 @@ const Person = ({people,chosenPerson}) => {
     let {setChosenPerson} = useGlobalContext();
     let index = chosenPerson
     const {openModal} = useGlobalContext()
-    const {setPeople,lastPerson} = useGlobalContext()
-    const {alert,setAlert,showAlert} = useGlobalContext()
+    const {setPeople} = useGlobalContext()
+    const {showAlert} = useGlobalContext()
     const [editID,setEditID] = useState()
     const [editnickname,setEditNickname] = useState('')
     const [editfirstname,setEditFirstname] = useState('')
@@ -20,7 +20,6 @@ const Person = ({people,chosenPerson}) => {
     const [editbirthDate, setEditBirthDate] = useState(new Date())
     const [editstatus, setEditStatus] = useState('single')
     const [editcountry,setEditCountry] = useState('')
-    const [edithobbies,setEditHobbies] = useState([])
     const [editimgLink,setEditImgLink] = useState('')
     let {isEditing,setIsEditing} = useGlobalContext()
     // useEffect(() => {
@@ -29,12 +28,16 @@ const Person = ({people,chosenPerson}) => {
     //       },1000)
     //       return () => clearTimeout(timeout)
     //   }, [index])
-    console.log(" editing " + editnickname )
-    const editPerson = (id) => {
-        const specificItem = people.find((item)=> item.id === id)
+    
+    const editPerson = (_id) => {
+        const specificItem = people.find((item)=> item._id === _id)
+        // const specificItem2 = people.find((item)=> {
+        //     console.log(" editing " + _id + " item id: " + item._id)
+        // } )
+        
         let birthdayNew = new Date()
         setIsEditing(!isEditing)
-        setEditID(id)
+        setEditID(_id)
         setEditNickname(specificItem.nickname)
         setEditFirstname(specificItem.firstname)
         setEditLastname(specificItem.lastname)
@@ -50,15 +53,15 @@ const Person = ({people,chosenPerson}) => {
       }
 
     // Fetch People for edit
-    const fetchPeople = async (id) => {
-        const res = await fetch(`http://localhost:5000/people/${id}`)
+    const fetchPeople = async (_id) => {
+        const res = await fetch(`https://dalelanto-people.herokuapp.com/people/${_id}`)
         const data = await res.json()
         //console.log(data)
         return data
     }
     // edit Person
-    const editPersonServer = async (id) => {
-        const personToChange = await fetchPeople(id)
+    const editPersonServer = async (_id) => {
+        const personToChange = await fetchPeople(_id)
         const updPerson = { ...personToChange,
                 nickname:editnickname,
                 firstname:editfirstname,
@@ -69,7 +72,7 @@ const Person = ({people,chosenPerson}) => {
                 country:editcountry
                 //hobbies:hobbies
              }
-        const res = await fetch(`http://localhost:5000/people/${id}`,{
+        const res = await fetch(`https://dalelanto-people.herokuapp.com/people/${_id}`,{
         method: 'PUT',
         headers: {
             'Content-type': 'application/json',
@@ -77,10 +80,11 @@ const Person = ({people,chosenPerson}) => {
         body: JSON.stringify(updPerson)
         })
 
-        const data = await res.json()
-
+        //const data = await res.json()
+        await res.json()
+        
         setPeople(people.map((person)=>{
-        if(person.id === editID){
+        if(person._id === editID){
             return {...person,
                 nickname:editnickname,
                 firstname:editfirstname,
@@ -94,7 +98,7 @@ const Person = ({people,chosenPerson}) => {
         }
         return person
         }))
-        //console.log('doubleClick',id)
+        //console.log('doubleClick',_id)
     }
 
     const editSubmit = (e) => {
@@ -111,28 +115,29 @@ const Person = ({people,chosenPerson}) => {
         }
         
     }
-    const removePerson = async (id) => {
-        await fetch(`http://localhost:5000/people/${id}`,{
+    const removePerson = async (_id) => {
+        await fetch(`https://dalelanto-people.herokuapp.com/people/${_id}`,{
         method: 'DELETE',
         })
         showAlert(true,'danger','person removed')
-        setPeople(people.filter((person)=> person.id !== id ))
-        if(people.length >= 2){
-            index= people.length - 2
-            //console.log("remove Person " + index)
-            setChosenPerson(index)
-        }    
+        setPeople(people.filter((person)=> person._id !== _id ))
+        // if(people.length >= 2){
+        //     index= people.length - 2
+        //     //console.log("remove Person " + index)
+        //     setChosenPerson(index)
+        // }    
+        setChosenPerson(0)
     }
 
     return (
         
         <div>
             
-            {people.filter(person => person.id === index).map((filteredperson)=>{
-                const {id,nickname,firstname,lastname,birthday,status,
-                    country,img,hobbies,likes} = filteredperson
+            {people.filter(person => person._id === index).map((filteredperson)=>{
+                const {_id,nickname,firstname,lastname,birthday,status,
+                    country,img} = filteredperson
                 return (
-                    <div className="" key={id}>
+                    <div className="" key={_id}>
                         <form className="row" onSubmit={editSubmit}>
                             <div className="column">
                                 {(img.includes('http://') || img.includes('https://')) && (img.includes('.jpg') || img.includes('.png')) 
@@ -178,25 +183,13 @@ const Person = ({people,chosenPerson}) => {
                                             ? <input className="add-input" type="text" value={editcountry} onChange={(e)=>setEditCountry(e.target.value)} size="10" required/>
                                             : country}
                                         </p>
-                                        <p className="chosen-name">Hobbies: 
-                                            {
-                                            hobbies.length > 1
-                                            ? hobbies.map((hobby,i)=>{
-                                                return (
-                                                    <li className="hobby" key={i}>
-                                                    {hobby}
-                                                    </li>
-                                                )
-                                            })
-                                            : " none"}
-                                            
-                                        </p>
+                                        
                                         <Modal img={img} />
                                     </div>
                                     <div className="chosen-btn"> 
                                         {isEditing && <button className="save-btn" type="submit"><GiSave className="chosen-icon blue"/></button>}
-                                        <AiFillEdit className={isEditing ? "chosen-icon red" : "chosen-icon blue" } onClick={()=>editPerson(id)}/>
-                                        <AiFillDelete className="chosen-icon" onClick={()=>removePerson(id)}/>
+                                        <AiFillEdit className={isEditing ? "chosen-icon red" : "chosen-icon blue" } onClick={()=>editPerson(_id)}/>
+                                        <AiFillDelete className="chosen-icon" onClick={()=>removePerson(_id)}/>
                                         
                                     </div>
                                 </div>
