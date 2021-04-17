@@ -222,6 +222,7 @@ li:nth-child(odd) { background: #F5F5F5; }
     height: 12px;
     display: table-cell;
     margin-left: 10px;
+    width: 180px;
   }
   .add-input:focus {
     border-color: green

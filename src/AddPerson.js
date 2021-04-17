@@ -74,7 +74,7 @@ const AddPerson = () => {
                 <div className="add-info">
                     <div className="add-row">
                         <label className="add-label"> Nickname : </label>
-                        <input className="add-input" type="text" value={nickname} onChange={(e)=>setNickname(e.target.value)} size="30" required/>
+                        <input className="add-input" type="text" value={nickname} onChange={(e)=>setNickname(e.target.value)} size="25" required/>
                     </div>
                     <div className="add-row">
                         <label className="add-label"> First Name: </label>
