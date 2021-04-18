@@ -149,30 +149,30 @@ const Person = ({people,chosenPerson}) => {
                             </div>
                             <div className="column">
                                 <div className="chosen-info">
-                                    <div className="chosen-data">
+                                    <div className={isEditing ? "chosen-date edit-up" : "chosen-data"}>
                                         <p className="chosen-name">Nickname: {isEditing 
-                                            ? <input className="add-input" type="text" value={editnickname} onChange={(e)=>setEditNickname(e.target.value)} size="10" required/>
+                                            ? <input className="edit-input" type="text" value={editnickname} onChange={(e)=>setEditNickname(e.target.value)} size="10" required/>
                                             : nickname}
                                         </p>
                                         {isEditing 
                                         ? 
                                         <p className="chosen-name">
                                             <label className="edit-label"> First Name: </label>
-                                            <input className="add-input" type="text" value={editfirstname} onChange={(e)=>setEditFirstname(e.target.value)} size="10" required/>
+                                            <input className="edit-input name" type="text" value={editfirstname} onChange={(e)=>setEditFirstname(e.target.value)} size="10" required/>
                                             <label className="edit-label"> Last Name: </label>
-                                            <input className="add-input" type="text" value={editlastname} onChange={(e)=>setEditLastname(e.target.value)} size="10" required/>
+                                            <input className="edit-input name" type="text" value={editlastname} onChange={(e)=>setEditLastname(e.target.value)} size="10" required/>
                                             <label className="edit-label"> Image Link: </label>
-                                            <input className="add-input" type="text" value={editimgLink} onChange={(e)=>setEditImgLink(e.target.value)} size="10" required/>
+                                            <input className="edit-input name" type="text" value={editimgLink} onChange={(e)=>setEditImgLink(e.target.value)} size="10" required/>
                                         </p>
                                         :
                                         <p className="chosen-name">Fullname: {firstname + " " + lastname}</p>
                                         }
                                         <div className="chosen-name">Birthday: {isEditing 
-                                            ? <DatePicker className="edit-birthday" selected={editbirthDate} onChange={date => setEditBirthDate(date)} />
+                                            ? <DatePicker className="edit-birthday birthday" selected={editbirthDate} onChange={date => setEditBirthDate(date)} />
                                             : birthday}
                                         </div>
                                         <p className="chosen-name">Status: {isEditing 
-                                            ? <select className="edit-birthday" value={editstatus} onChange={(e)=>setEditStatus(e.target.value)}>
+                                            ? <select className="edit-birthday status" value={editstatus} onChange={(e)=>setEditStatus(e.target.value)}>
                                                     <option value="single">Single</option>
                                                     <option value="married">Married</option>
                                                     <option value="widowed">Widowed</option>
@@ -180,7 +180,7 @@ const Person = ({people,chosenPerson}) => {
                                             : status}
                                         </p>
                                         <p className="chosen-name">Country: {isEditing 
-                                            ? <input className="add-input" type="text" value={editcountry} onChange={(e)=>setEditCountry(e.target.value)} size="10" required/>
+                                            ? <input className="edit-input country" type="text" value={editcountry} onChange={(e)=>setEditCountry(e.target.value)} size="10" required/>
                                             : country}
                                         </p>
                                         

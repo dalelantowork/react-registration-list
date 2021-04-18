@@ -227,6 +227,30 @@ li:nth-child(odd) { background: #F5F5F5; }
   .add-input:focus {
     border-color: green
   }
+  .edit-input {
+    outline: 0;
+    border-width: 0 0 1px;
+    border-color: #000;
+    height: 12px;
+    display: table-cell;
+    margin-left: 0px;
+    width: 90px;
+  }
+  .edit-input:focus {
+    border-color: green
+  }
+  .name {
+    width: 150px;
+  }
+  .country {
+    width: 100px;
+  }
+  .status {
+    width: 98px !important;
+  }
+  .birthday {
+    width: 88px !important;
+  }
   .add-birthday {
     outline: 0;
     border-width: 0 0 1px;
@@ -295,6 +319,9 @@ li:nth-child(odd) { background: #F5F5F5; }
 /* edit */
 .edit-label {
   font-weight: 400;
+  margin-bottom: 0px;
+  width: 100px;
+  display: table-cell;
 }
 .edit-birthday {
   outline: 0;
@@ -350,7 +377,9 @@ li:nth-child(odd) { background: #F5F5F5; }
   border-radius: 10px;
   border: 3px solid var(--scrollbarBG);
 }
-
+.edit-up {
+  margin-top:50px !important;
+}
 /*
 .point {
     width: 6px;
