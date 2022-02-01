@@ -1,4 +1,10 @@
-# Getting Started with Create React App
+#Registration List using ReactJS (v16 w/ hooks, etc.)
+This project is made with MERN Full Stack Development - Mongo DB, Express JS, React JS and Node JS. 
+Database is hosted in Mongo DB. 
+Database API and Server hosted in Heroku.
+React JS Front End hosted in Netlify.
+
+## Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
