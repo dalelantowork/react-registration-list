@@ -1,4 +1,4 @@
-#Registration List using ReactJS (v16 w/ hooks, etc.)
+# Registration List using ReactJS (v16 w/ hooks, etc.)
 This project is made with MERN Full Stack Development - Mongo DB, Express JS, React JS and Node JS. 
 Database is hosted in Mongo DB. 
 Database API and Server hosted in Heroku.
